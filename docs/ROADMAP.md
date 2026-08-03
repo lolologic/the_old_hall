@@ -2,7 +2,7 @@
 
 **Version des Dokuments:** 0.1
 **Projekt:** Roboter-Textadventure
-**Arbeitstitel:** *Die alte Halle*
+**Arbeitstitel:** *The Old Hall*
 
 ---
 
@@ -10,192 +10,338 @@
 
 Diese Roadmap beschreibt die schrittweise Entwicklung des Textadventures.
 
-Jede Version erweitert eine bereits funktionierende Grundlage um einen klar abgegrenzten Bereich. Neue Mechaniken sollen möglichst erst begonnen werden, wenn die vorherige Entwicklungsstufe stabil funktioniert.
+Jede Version soll einen klar abgegrenzten Entwicklungsstand darstellen. Neue Mechaniken werden möglichst erst begonnen, wenn die vorherige Stufe stabil funktioniert.
 
-Die Checklisten unter den einzelnen Versionen werden während der weiteren Planung ergänzt und anschließend zur Umsetzung und Kontrolle verwendet.
+Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während der Entwicklung erweitert oder angepasst werden.
 
 ---
 
-## Version 0.1 – Grundlegender Spielablauf
+## Version 0.1 – Grundkonzept
 
-**Ziel:** Eine erste vollständig spielbare Minimalversion.
+**Ziel:** Die grundlegende Idee, Spielmechanik und Entwicklungsrichtung des Projekts festlegen.
 
-Geplant:
+### Geplant
 
-* drei Räume
-* Spielerenergie
-* ein Schlüssel
-* grundlegende Bewegung beziehungsweise Raumauswahl
-* einfache Gewinnbedingung
-* einfache GAME-OVER-Bedingung
+* grundlegende Spielidee definieren
+* Atmosphäre und Setting festlegen
+* Rolle von ROBO-01 definieren
+* grundlegende Spielmechaniken festlegen
+* zwei Spielabschnitte konzeptionell festlegen
+* Energie-, Gegenstands- und Rätselmechanik grob planen
+* Projektstruktur vorbereiten
+* Entwicklungsroadmap erstellen
 
 ### Checkliste
 
-* [ ] Räume definieren
-* [ ] Wechsel zwischen den Räumen ermöglichen
-* [ ] Energielevel des Spielers implementieren
-* [ ] Energieverbrauch festlegen
-* [ ] Schlüssel platzieren
-* [ ] Schlüssel auffindbar machen
-* [ ] verschlossenen Bereich beziehungsweise Ausgang implementieren
-* [ ] Gewinnbedingung prüfen
-* [ ] GAME OVER bei Energie `0` implementieren
-* [ ] vollständigen Spielablauf testen
+* [x] Grundidee des Textadventures festlegen
+* [x] Setting der verlassenen Industriehalle definieren
+* [x] ROBO-01 als Begleiter und Spielelement festlegen
+* [x] Spielerenergie als Spielmechanik definieren
+* [x] grundlegende Gegenstandstypen festlegen
+* [x] Spezialschlüssel als Übergang zum zweiten Abschnitt definieren
+* [x] finales Aufmerksamkeitsrätsel konzeptionell festlegen
+* [x] mögliche zufällige Gegenstandsverteilung einplanen
+* [x] GAME-OVER-Bedingung festlegen
+* [x] erfolgreiches Spielende festlegen
+* [x] `KONCEPT.md` erstellen
+* [x] `ROADMAP.md` erstellen
+* [x] Projektdokumentation unter `docs/` strukturieren
+* [ ] Konzept und Roadmap vor Beginn von Version 0.2 abschließend prüfen
 
 ---
 
-## Version 0.2 – Inventar und Gegenstände
+## Version 0.2 – Grundlegende Räume und Spielschleife
 
-**Ziel:** Einführung eines einfachen Gegenstands- und Inventarsystems.
+**Ziel:** Eine erste navigierbare Spielwelt und einen dauerhaft laufenden Spielablauf implementieren.
 
-Geplant:
+### Geplant
+
+* grundlegende Spielschleife
+* mehrere Räume
+* aktueller Standort des Spielers
+* Bewegung zwischen Räumen
+* einfache Auswahlmenüs
+* grundlegende Eingabeverarbeitung
+* Beenden des Spiels durch den Spieler
+
+### Checkliste
+
+* [ ] grundlegende Programmstruktur anlegen
+* [ ] mindestens drei Räume definieren
+* [ ] aktuellen Raum des Spielers speichern
+* [ ] mögliche Raumwechsel festlegen
+* [ ] Bewegung zwischen Räumen implementieren
+* [ ] aktuellen Raum beschreiben
+* [ ] mögliche Aktionen anzeigen
+* [ ] Spielerbefehl einlesen
+* [ ] Spielerbefehl verarbeiten
+* [ ] ungültige Eingaben behandeln
+* [ ] zentrale Spielschleife implementieren
+* [ ] Möglichkeit zum freiwilligen Beenden des Spiels einbauen
+* [ ] vollständige Navigation zwischen allen Räumen testen
+
+---
+
+## Version 0.3 – Spielerenergie und einfache Gegenstände
+
+**Ziel:** Den ersten echten Spielzustand und grundlegende Interaktionen mit Gegenständen einführen.
+
+### Geplant
+
+* Energielevel des Spielers
+* Energieverbrauch
+* GAME OVER bei Energie `0`
+* erste einfache Gegenstände
+* feste Gegenstandspositionen
+* Nervennahrung
+* einfacher Schlüssel
+
+### Checkliste
+
+* [ ] Energielevel des Spielers definieren
+* [ ] Startenergie festlegen
+* [ ] festlegen, welche Aktionen Energie verbrauchen
+* [ ] Energieverbrauch implementieren
+* [ ] Energielevel anzeigen
+* [ ] GAME OVER bei Energie `0` implementieren
+* [ ] ersten Gegenstand definieren
+* [ ] Gegenstände festen Räumen oder Fundorten zuweisen
+* [ ] Nervennahrung implementieren
+* [ ] Energie durch Nervennahrung erhöhen
+* [ ] einfachen Schlüssel implementieren
+* [ ] verschlossenen Bereich oder Ausgang implementieren
+* [ ] Schlüssel zur Freischaltung verwenden
+* [ ] Energie- und Gegenstandslogik gemeinsam testen
+
+---
+
+## Version 0.4 – Inventar und Gegenstandsinteraktionen
+
+**Ziel:** Aus einzelnen Gegenständen ein zusammenhängendes Inventar- und Interaktionssystem entwickeln.
+
+### Geplant
 
 * Inventar
 * mehrere Gegenstände
 * Gegenstände aufnehmen
 * Gegenstände verwenden
-* erste unterschiedliche Gegenstandstypen
+* Gegenstände untersuchen
+* unterschiedliche Gegenstandstypen
+* erste Abhängigkeiten zwischen Gegenständen und Umgebung
 
 ### Checkliste
 
 * [ ] Inventarstruktur festlegen
 * [ ] mehrere Gegenstände definieren
-* [ ] Gegenstände in Räumen platzieren
-* [ ] Gegenstände aufnehmen
+* [ ] Gegenstände aufnehmen können
+* [ ] aufgenommene Gegenstände aus der Spielwelt entfernen
 * [ ] Inventar anzeigen
-* [ ] Gegenstände verwenden
-* [ ] Nervennahrung implementieren
-* [ ] erste Hilfsmittel implementieren
-* [ ] ungültige Gegenstandsaktionen behandeln
-* [ ] Inventarsystem testen
+* [ ] prüfen können, ob ein Gegenstand vorhanden ist
+* [ ] Gegenstände verwenden können
+* [ ] Gegenstände untersuchen können
+* [ ] Nervennahrung in das Inventarsystem integrieren
+* [ ] Hilfsmittel für die Spielwelt implementieren
+* [ ] erste Gegenstandsabhängigkeiten einbauen
+* [ ] Aktionen ohne benötigten Gegenstand sinnvoll behandeln
+* [ ] Inventar- und Gegenstandslogik testen
 
 ---
 
-## Version 0.3 – ROBO-01
+## Version 0.5 – ROBO-01-Zustände und Dialoge
 
-**Ziel:** ROBO-01 wird zu einem dynamischen Bestandteil des Spiels.
+**Ziel:** ROBO-01 zu einem dynamischen Begleiter machen, dessen Verhalten vom bisherigen Spielverlauf abhängt.
 
-Geplant:
+### Geplant
 
-* Roboterzustände
-* unterschiedliche Reaktionen
-* Einfluss von Spielerentscheidungen
-* erste Hinweise durch ROBO-01
+* unterschiedliche Roboterzustände
+* Stimmung
+* technischer Zustand
+* Dialogsystem
+* Reaktionen auf Spieleraktionen
+* unterschiedliche Hinweise
+* erste Hilfsmittel für ROBO-01
 
 ### Checkliste
 
-* [ ] Roboterzustände definieren
-* [ ] Ausgangszustand festlegen
-* [ ] Zustandsänderungen implementieren
+* [ ] mögliche Stimmungen von ROBO-01 definieren
+* [ ] technischen Zustand von ROBO-01 definieren
+* [ ] Stimmung und technischen Zustand getrennt speichern
+* [ ] Ausgangszustände festlegen
+* [ ] Zustandsänderungen definieren
+* [ ] Spieleraktionen mit Zustandsänderungen verknüpfen
 * [ ] Dialoge abhängig vom Zustand ausgeben
-* [ ] Reaktionen auf Spieleraktionen implementieren
-* [ ] erste Hinweise einbauen
-* [ ] technischen Zustand und Stimmung sinnvoll trennen
-* [ ] Roboterlogik testen
+* [ ] unterschiedliche Reaktionen auf Spielerentscheidungen implementieren
+* [ ] Möglichkeit zum direkten Ansprechen von ROBO-01 implementieren
+* [ ] Hilfsmittel für ROBO-01 einführen
+* [ ] Reparatur- oder Pflegeaktionen implementieren
+* [ ] erste spielrelevante Hinweise durch ROBO-01 integrieren
+* [ ] sicherstellen, dass schlechte Zustände das Spiel nicht unlösbar machen
+* [ ] Roboterlogik ausführlich testen
 
 ---
 
-## Version 0.4 – Zufällige Gegenstandsverteilung
+## Version 0.6 – Zufällige Gegenstandsverteilung
 
-**Ziel:** Neue Spieldurchläufe sollen unterschiedliche Gegenstandspositionen besitzen.
+**Ziel:** Neue Spieldurchläufe durch unterschiedliche Gegenstandspositionen variabler gestalten.
 
-Geplant:
+### Geplant
 
-* zufällige Platzierung normaler Gegenstände
-* unterschiedliche Fundorte
-* Schutz vor unlösbaren Spielzuständen
+* zufällige Verteilung normaler Gegenstände
+* mehrere mögliche Fundorte
+* unterschiedliche Verteilungen pro Spieldurchlauf
+* Spezialschlüssel weiterhin nicht direkt zufällig platzieren
+* Schutz vor unlösbaren Konstellationen
 
 ### Checkliste
 
 * [ ] Zufallsgenerator initialisieren
 * [ ] mögliche Fundorte definieren
-* [ ] Gegenstände zufällig verteilen
-* [ ] Spezialschlüssel von der Zufallsverteilung ausschließen
-* [ ] doppelte oder unerwünschte Platzierungen behandeln
-* [ ] Lösbarkeit jeder Verteilung sicherstellen
-* [ ] mehrere zufällige Spieldurchläufe testen
+* [ ] Gegenstände für zufällige Verteilung festlegen
+* [ ] Gegenstände zufällig auf Fundorte verteilen
+* [ ] Spezialschlüssel von der direkten Zufallsverteilung ausschließen
+* [ ] Regeln für doppelte Belegungen festlegen
+* [ ] unerwünschte Gegenstandskombinationen verhindern
+* [ ] notwendige Gegenstände erreichbar halten
+* [ ] logische Abhängigkeiten zwischen Gegenständen prüfen
+* [ ] unlösbare Spielzustände verhindern
+* [ ] mehrere neue Spiele mit unterschiedlichen Verteilungen testen
+* [ ] Zufallsmechanik auf reproduzierbare Fehler prüfen
 
 ---
 
-## Version 0.5 – Zweiter Abschnitt und finales Rätsel
+## Version 0.7 – Zweites Teilstück und finales Rätsel
 
-**Ziel:** Das vollständige Abenteuer erhält seinen zweiten Teil und das eigentliche Finale.
+**Ziel:** Das vollständige Abenteuer mit dem zweiten Spielabschnitt und dem eigentlichen Finale fertigstellen.
 
-Geplant:
+### Geplant
 
 * Spezialschlüssel
+* Weg zum Spezialschlüssel
 * zweiter Spielabschnitt
-* Hinweise während des Abenteuers
+* spielübergreifende Hinweise
 * finales Aufmerksamkeitsrätsel
 * vollständige Gewinnbedingung
 
 ### Checkliste
 
 * [ ] Weg zum Spezialschlüssel entwerfen
+* [ ] notwendige Voraussetzungen für den Spezialschlüssel festlegen
 * [ ] Spezialschlüssel implementieren
-* [ ] Zugang zum zweiten Abschnitt implementieren
-* [ ] zweiten Abschnitt entwerfen
-* [ ] relevante Hinweise von ROBO-01 festlegen
-* [ ] Hinweise in den bisherigen Spielablauf integrieren
+* [ ] Zugang zum zweiten Spielabschnitt implementieren
+* [ ] zweiten Spielabschnitt vollständig entwerfen
+* [ ] Räume oder Bereiche des zweiten Abschnitts implementieren
+* [ ] relevante Informationen für das finale Rätsel festlegen
+* [ ] Hinweise sinnvoll über das gesamte Abenteuer verteilen
+* [ ] unterschiedliche ROBO-01-Zustände bei Hinweisen berücksichtigen
 * [ ] finales Rätsel entwerfen
-* [ ] Rätsel implementieren
-* [ ] sicherstellen, dass das Rätsel immer lösbar bleibt
+* [ ] finales Rätsel implementieren
+* [ ] falsche Antworten behandeln
+* [ ] sicherstellen, dass das Rätsel immer logisch lösbar bleibt
 * [ ] vollständige Gewinnbedingung implementieren
-* [ ] komplettes Abenteuer testen
+* [ ] kompletten Spielablauf von Anfang bis Ende testen
 
 ---
 
-## Version 0.6 – Darstellung und Atmosphäre
+## Version 0.8 – ASCII-Art, Farben und Effekte
 
-**Ziel:** Die funktionierende Spielmechanik erhält ihre endgültige Konsolendarstellung.
+**Ziel:** Die funktionierende Spielmechanik atmosphärisch und visuell aufwerten.
 
-Geplant:
+### Geplant
 
 * ASCII-Art
-* farbige Konsolenausgabe
 * Startbildschirm
 * GAME-OVER-Bildschirm
 * Siegerbildschirm
-* zusätzliche Ausgabe-Effekte
+* farbige Konsolenausgabe
+* Hervorhebung wichtiger Meldungen
+* kleinere Texteffekte
 
 ### Checkliste
 
 * [ ] ASCII-Startbildschirm integrieren
 * [ ] GAME-OVER-Bildschirm integrieren
 * [ ] Siegerbildschirm integrieren
-* [ ] Farbschema festlegen
+* [ ] Darstellungsstil für ROBO-01 festlegen
+* [ ] Farbschema für die Konsole definieren
 * [ ] farbige Konsolenausgabe implementieren
-* [ ] wichtige Meldungstypen visuell unterscheiden
+* [ ] Farben nach ihrer Bedeutung strukturieren
+* [ ] wichtige Spielmeldungen hervorheben
+* [ ] Dialoge von ROBO-01 visuell unterscheiden
 * [ ] Erfolgseffekt implementieren
-* [ ] Darstellung in der verwendeten Konsole testen
+* [ ] gegebenenfalls Texteffekte einbauen
+* [ ] Darstellung im verwendeten Terminal testen
+* [ ] sicherstellen, dass die Darstellung die Spiellogik nicht beeinflusst
 
 ---
 
-## Version 1.0 – Vollständige Version
+## Version 0.9 – Speichern und Laden
 
-**Ziel:** Fertigstellung einer vollständigen und stabilen ersten Hauptversion.
+**Ziel:** Den vollständigen Spielzustand dauerhaft speichern und später wiederherstellen können.
 
-Geplant:
+### Geplant
 
 * Speicherstand
 * Laden eines Speicherstands
-* vollständige Texte und Dialoge
-* Überarbeitung aller Spielabschnitte
-* Fehlerbehandlung
-* abschließende Tests
+* Speicherung aller relevanten Zustände
+* Fehlerbehandlung für Speicherdateien
 
 ### Checkliste
 
-* [ ] relevanten Spielzustand für Speicherstände definieren
-* [ ] Speicherformat festlegen
-* [ ] Spiel speichern
-* [ ] Spiel laden
-* [ ] ungültige oder beschädigte Speicherstände behandeln
+* [ ] festlegen, welche Daten gespeichert werden müssen
+* [ ] Speicherformat definieren
+* [ ] Spielerposition speichern
+* [ ] Spielerenergie speichern
+* [ ] Inventar speichern
+* [ ] Gegenstandspositionen speichern
+* [ ] Zustände von ROBO-01 speichern
+* [ ] Spielfortschritt speichern
+* [ ] relevante Rätsel- und Hinweiszustände speichern
+* [ ] Spielstand in Datei schreiben
+* [ ] Spielstand aus Datei laden
+* [ ] geladenen Spielzustand vollständig wiederherstellen
+* [ ] fehlende Speicherdatei behandeln
+* [ ] ungültige oder beschädigte Speicherdateien behandeln
+* [ ] Speichern und Laden in unterschiedlichen Spielsituationen testen
+
+---
+
+## Version 1.0 – Vollständige spielbare Version
+
+**Ziel:** Das gesamte Projekt stabilisieren, überarbeiten und als vollständige erste Hauptversion fertigstellen.
+
+### Geplant
+
+* vollständige Texte
+* vollständige Dialoge
+* Überarbeitung der Spielbalance
+* Eingabevalidierung
+* Fehlerbehandlung
+* vollständige Tests
+* Bereinigung des Codes
+* abschließende Dokumentation
+
+### Checkliste
+
+* [ ] alle Platzhaltertexte ersetzen
 * [ ] alle Dialoge fertigstellen
 * [ ] Texte sprachlich überarbeiten
-* [ ] Eingaben auf Fehlerfälle prüfen
+* [ ] Atmosphäre im gesamten Spiel vereinheitlichen
+* [ ] Energieverbrauch ausbalancieren
+* [ ] Gegenstandsverteilung ausbalancieren
+* [ ] Verhalten von ROBO-01 überprüfen
+* [ ] alle Eingaben auf Fehlerfälle prüfen
+* [ ] unerwartete Eingaben abfangen
+* [ ] vollständigen Code auf unnötige Wiederholungen prüfen
+* [ ] Funktionen sinnvoll strukturieren
+* [ ] Variablen und Funktionen verständlich benennen
+* [ ] Warnungen des Compilers beseitigen
 * [ ] vollständiges Spiel mehrfach durchspielen
-* [ ] verschiedene Gegenstandsverteilungen testen
+* [ ] unterschiedliche Spielwege testen
+* [ ] unterschiedliche Gegenstandsverteilungen testen
 * [ ] unterschiedliche ROBO-01-Zustände testen
-* [ ] Gewinn- und GAME-OVER-Pfade testen
+* [ ] GAME-OVER-Pfade testen
+* [ ] Gewinnpfad testen
+* [ ] Speichern und Laden im vollständigen Spiel testen
+* [ ] `README.md` auf den finalen Stand bringen
+* [ ] Dokumentation aktualisieren
 * [ ] Version `1.0` fertigstellen
