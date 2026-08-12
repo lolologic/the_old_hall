@@ -46,7 +46,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] `KONCEPT.md` erstellen
 * [x] `ROADMAP.md` erstellen
 * [x] Projektdokumentation unter `docs/` strukturieren
-* [ ] Konzept und Roadmap vor Beginn von Version 0.2 abschließend prüfen
+* [x] Konzept und Roadmap vor Beginn von Version 0.2 abschließend prüfen
 
 ---
 
