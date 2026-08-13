@@ -3,14 +3,13 @@
 
 void intro();
 int gameLoop();
-void showTransportRoute();
-void showGuardHouse();
-void showForkLift();
-void readInput(char *buffer, int lenghts);
+void showTransportRoute(char *input, int inputLength);
+void showGuardHouse(char *input);
+void showForkLift(char *input);
+void readInput(char *buffer, int length);
 
 int room = 1;
 int playerPosition = 0;
-char input[30];
 
 int transportRouteVisited = 0;
 int guardHouseVisited = 0;
@@ -24,25 +23,33 @@ int main() {
     return 0;
 }
 
-void readInput(char *buffer, int lenghts) {
-    fgets(buffer, lenghts, stdin);
+void readInput(char *buffer, int length) {
+    fgets(buffer, length, stdin);
     size_t newline = strcspn(buffer, "\n");
     buffer[newline] = '\0';
 }
 
 int gameLoop() {
 
-    while (strcmp(input, "exit") != 0) {
+    char input[30] = "";
+
+    int gameRunning = 1;
+
+    while (gameRunning == 1) {
+
+        if (strcmp(input, "exit") == 0) {
+            gameRunning = 0;
+        }
 
         switch (room) {
             case 1:
-                showTransportRoute();
+                showTransportRoute(input, sizeof(input));
                 break;
             case 2:
-                showGuardHouse();
+                showGuardHouse(input);
                 break;
             case 3:
-                showForkLift();
+                showForkLift(input);
                 break;
         }
 
@@ -70,7 +77,7 @@ void intro(void) {
 
 }
 
-void showTransportRoute() {
+void showTransportRoute(char *input, int inputLength) {
 
     if (playerPosition == 1 && transportRouteVisited == 0) {
         printf("\n--- Der Transportweg ---\n");
@@ -95,7 +102,7 @@ void showTransportRoute() {
     }
 }
 
-void showGuardHouse() {
+void showGuardHouse(char *input) {
 
     if (guardHouseVisited == 0) {
         printf("\n--- Das Wachhäusschen ---\n");
@@ -113,7 +120,7 @@ void showGuardHouse() {
     }
 }
 
-void showForkLift() {
+void showForkLift(char *input) {
 
     if (forkLiftVisited == 0) {
         printf("\n--- Der Gabelstapler ---\n");

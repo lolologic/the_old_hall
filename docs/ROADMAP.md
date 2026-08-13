@@ -66,19 +66,19 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 
 ### Checkliste
 
-* [ ] grundlegende Programmstruktur anlegen
-* [ ] mindestens drei Räume definieren
-* [ ] aktuellen Raum des Spielers speichern
-* [ ] mögliche Raumwechsel festlegen
-* [ ] Bewegung zwischen Räumen implementieren
-* [ ] aktuellen Raum beschreiben
-* [ ] mögliche Aktionen anzeigen
-* [ ] Spielerbefehl einlesen
-* [ ] Spielerbefehl verarbeiten
-* [ ] ungültige Eingaben behandeln
-* [ ] zentrale Spielschleife implementieren
-* [ ] Möglichkeit zum freiwilligen Beenden des Spiels einbauen
-* [ ] vollständige Navigation zwischen allen Räumen testen
+- [x] grundlegende Programmstruktur anlegen
+- [x] mindestens drei Räume definieren
+- [x] aktuellen Raum des Spielers speichern
+- [x] mögliche Raumwechsel festlegen
+- [x] Bewegung zwischen Räumen implementieren
+- [x] aktuellen Raum beschreiben
+- [x] mögliche Aktionen anzeigen
+- [x] Spielerbefehl einlesen
+- [x] Spielerbefehl verarbeiten
+- [x] ungültige Eingaben behandeln
+- [x] zentrale Spielschleife implementieren
+- [ ] Möglichkeit zum freiwilligen Beenden des Spiels einbauen
+- [ ] vollständige Navigation zwischen allen Räumen testen
 
 ---
 
