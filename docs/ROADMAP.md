@@ -1,8 +1,8 @@
 # ROADMAP
 
-**Version des Dokuments:** 0.1
+**Version des Dokuments:** 0.2
 **Projekt:** Roboter-Textadventure
-**Arbeitstitel:** *The Old Hall*
+**Arbeitstitel:** The Old Hall
 
 ---
 
@@ -57,28 +57,102 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 ### Geplant
 
 * grundlegende Spielschleife
-* mehrere Räume
-* aktueller Standort des Spielers
-* Bewegung zwischen Räumen
-* einfache Auswahlmenüs
+* mehrere Räume und Bereiche
+* Positionen und Perspektiven innerhalb von Räumen
+* aktueller Raum des Spielers
+* aktuelle Position des Spielers innerhalb eines Raums
+* Bewegung zwischen Positionen und Räumen
+* textbasierte Navigation über ausgeschriebene Befehle
 * grundlegende Eingabeverarbeitung
 * Beenden des Spiels durch den Spieler
+* allgemeine `zurück`-Navigation zum vorherigen Standort
+* erste Karte der Spielwelt
+* erste Ausarbeitung der Raum-, Positions- und Umgebungstexte
 
 ### Checkliste
 
-- [x] grundlegende Programmstruktur anlegen
-- [x] mindestens drei Räume definieren
-- [x] aktuellen Raum des Spielers speichern
-- [x] mögliche Raumwechsel festlegen
-- [x] Bewegung zwischen Räumen implementieren
-- [x] aktuellen Raum beschreiben
-- [x] mögliche Aktionen anzeigen
-- [x] Spielerbefehl einlesen
-- [x] Spielerbefehl verarbeiten
-- [x] ungültige Eingaben behandeln
-- [x] zentrale Spielschleife implementieren
-- [ ] Möglichkeit zum freiwilligen Beenden des Spiels einbauen
-- [ ] vollständige Navigation zwischen allen Räumen testen
+#### Grundstruktur und Spielzustand
+
+* [x] grundlegende Programmstruktur anlegen
+* [x] Intro vom eigentlichen Spielablauf trennen
+* [x] zentrale Spielschleife implementieren
+* [x] aktuellen Raum des Spielers speichern
+* [x] aktuelle Position innerhalb eines Raums speichern
+* [x] Raum und Position als getrennte Zustände modellieren
+* [x] ersten Raum mit mehreren Positionen/Perspektiven beginnen
+* [ ] mindestens drei grundlegende Räume oder größere Bereiche definieren
+* [ ] mögliche Raumwechsel vollständig festlegen
+* [ ] mögliche Positionswechsel innerhalb der Räume vollständig festlegen
+
+#### Navigation und Eingabe
+
+* [x] Spielerbefehl über einen Eingabepuffer einlesen
+* [x] zentrale Funktion für die Texteingabe implementieren
+* [x] Zeilenumbruch nach `fgets()` entfernen
+* [x] ausgeschriebene Navigationsbefehle verarbeiten
+* [x] erste Bewegung zwischen Positionen implementieren
+* [ ] Bewegung zwischen echten Räumen implementieren
+* [x] ungültige Eingaben behandeln
+* [x] Möglichkeit zum freiwilligen Beenden mit `exit` einbauen
+* [x] `exit` zentral über die Spielschleife auswerten
+* [ ] vorherigen Raum speichern
+* [ ] vorherige Position speichern
+* [ ] allgemeinen `zurück`-Befehl zum vorherigen Standort implementieren
+* [ ] sicherstellen, dass `zurück` auch über Raumgrenzen hinweg funktioniert
+
+#### Räume und Perspektiven
+
+* [x] Transportweg als ersten Raum/Bereich anlegen
+* [x] Startposition an der verschlossenen Eingangstür definieren
+* [x] Position vor dem Wachhäuschen definieren
+* [x] Position beim Gabelstapler definieren
+* [x] unterschiedliche Beschreibungen abhängig von der Spielerposition ermöglichen
+* [ ] Navigation an jeder Position auf tatsächlich mögliche Wege beschränken
+* [ ] Wachhäuschen als betretbaren eigenen Raum ausarbeiten
+* [ ] entscheiden, ob der Gabelstapler nur mehrere Positionen oder einen eigenen Pseudo-Raum benötigt
+* [ ] weitere Räume und Positionen des ersten Spielabschnitts festlegen
+* [ ] Raumwechsel und Positionswechsel vollständig testen
+
+#### Spielzustand und Funktionsstruktur
+
+* [x] `room` aus dem globalen Zustand entfernen und in `gameLoop()` verwalten
+* [x] Raumwechsel über Rückgabewerte der Raumfunktionen ermöglichen
+* [x] `playerPosition` aus dem globalen Zustand entfernen und in `gameLoop()` verwalten
+* [x] `playerPosition` per Pointer an Raumfunktionen übergeben
+* [x] Eingabepuffer lokal in `gameLoop()` verwalten
+* [x] Eingabepuffer und Puffergröße gezielt an Raumfunktionen übergeben
+* [ ] verbleibende globale Zustandsvariablen überprüfen
+* [ ] Besuchszustände der Räume und Positionen sauber in den Spielzustand integrieren
+* [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob der Spielzustand zusammengefasst werden soll
+
+#### Karte und räumliche Planung
+
+* [ ] erste spielbare Räume und Positionen technisch fertigstellen
+* [ ] Karte der bisher implementierten Spielwelt zeichnen
+* [ ] Räume, Positionen und Verbindungen auf der Karte kennzeichnen
+* [ ] anhand der Karte unlogische oder unnötige Wege überprüfen
+* [ ] fehlende Verbindungen oder Positionen ergänzen
+* [ ] Raum- und Positions-IDs anhand der Karte überprüfen
+* [ ] Navigation nach Fertigstellung der ersten Karte erneut testen
+
+#### Texte und Atmosphäre
+
+* [ ] Beschreibungen der ersten Räume und Positionen ausarbeiten
+* [ ] unterschiedliche Perspektivtexte für wiederholte Besuche ausarbeiten
+* [ ] Übergangstexte zwischen Positionen und Räumen ergänzen
+* [ ] erste Platzhaltertexte durch atmosphärische Spieltexte ersetzen
+* [ ] darauf achten, dass Texte und tatsächliche Navigationsmöglichkeiten übereinstimmen
+* [ ] Texte des ersten Spielabschnitts vorläufig sprachlich überarbeiten
+
+#### Abschluss von Version 0.2
+
+* [ ] Navigation zwischen allen für v0.2 vorgesehenen Bereichen testen
+* [ ] Rückkehrwege vollständig testen
+* [ ] `exit` aus allen erreichbaren Spielsituationen testen
+* [ ] ungültige Eingaben an allen Positionen testen
+* [ ] prüfen, ob Raum- und Positionsmodell für die weitere Spielwelt ausreicht
+* [ ] Karte und Code auf Übereinstimmung prüfen
+* [ ] Version 0.2 als stabilen navigierbaren Grundstand abschließen
 
 ---
 
@@ -254,6 +328,8 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * Siegerbildschirm
 * farbige Konsolenausgabe
 * Hervorhebung wichtiger Meldungen
+* zeitgesteuerte Textausgabe
+* unterschiedliche Ausgabegeschwindigkeiten für Atmosphäre und Spannung
 * kleinere Texteffekte
 
 ### Checkliste
@@ -267,10 +343,14 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Farben nach ihrer Bedeutung strukturieren
 * [ ] wichtige Spielmeldungen hervorheben
 * [ ] Dialoge von ROBO-01 visuell unterscheiden
+* [ ] zentrale Funktion für zeitverzögerte Textausgabe implementieren
+* [ ] Ausgabegeschwindigkeit zentral steuerbar machen
+* [ ] sinnvolle Verzögerungen zwischen Zeichen, Wörtern oder Textabschnitten festlegen
+* [ ] wichtige atmosphärische Szenen mit angepasstem Timing versehen
 * [ ] Erfolgseffekt implementieren
-* [ ] gegebenenfalls Texteffekte einbauen
+* [ ] gegebenenfalls weitere Texteffekte einbauen
 * [ ] Darstellung im verwendeten Terminal testen
-* [ ] sicherstellen, dass die Darstellung die Spiellogik nicht beeinflusst
+* [ ] sicherstellen, dass Texteffekte die Spiellogik nicht beeinflussen
 
 ---
 
@@ -289,7 +369,9 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 
 * [ ] festlegen, welche Daten gespeichert werden müssen
 * [ ] Speicherformat definieren
-* [ ] Spielerposition speichern
+* [ ] aktuellen Raum speichern
+* [ ] Spielerposition innerhalb des Raums speichern
+* [ ] vorherigen Standort speichern, falls für die Navigation benötigt
 * [ ] Spielerenergie speichern
 * [ ] Inventar speichern
 * [ ] Gegenstandspositionen speichern
