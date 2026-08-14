@@ -68,6 +68,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * allgemeine `zurück`-Navigation zum vorherigen Standort
 * erste Karte der Spielwelt
 * erste Ausarbeitung der Raum-, Positions- und Umgebungstexte
+* Prüfung einer Auslagerung der Spieltexte aus dem Programmcode
 
 ### Checkliste
 
@@ -133,6 +134,8 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Besuchszustände der Räume und Positionen sauber in den Spielzustand integrieren
 * [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob der Spielzustand zusammengefasst werden soll
 * [ ] nach Einführung von `struct` prüfen, ob Raum und Position zu einem gemeinsamen Standort-Zustand zusammengefasst werden sollen
+* [ ] prüfen, ob Spieltexte aus dem Programmcode in externe Inhaltsdateien ausgelagert werden sollen
+* [ ] geeignetes Dateiformat und Zugriffsmodell für ausgelagerte Spieltexte festlegen
 
 #### Karte und räumliche Planung
 
@@ -152,6 +155,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] erste Platzhaltertexte durch atmosphärische Spieltexte ersetzen
 * [ ] darauf achten, dass Texte und tatsächliche Navigationsmöglichkeiten übereinstimmen
 * [ ] Texte des ersten Spielabschnitts vorläufig sprachlich überarbeiten
+* [ ] nach Entscheidung über die Textauslagerung die ersten Raum- und Positionstexte entsprechend strukturieren
 
 #### Abschluss von Version 0.2
 
@@ -340,6 +344,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * zeitgesteuerte Textausgabe
 * unterschiedliche Ausgabegeschwindigkeiten für Atmosphäre und Spannung
 * kleinere Texteffekte
+* Prüfung einer Terminalbibliothek wie `ncurses` für die Darstellung
 
 ### Checkliste
 
@@ -356,6 +361,9 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Ausgabegeschwindigkeit zentral steuerbar machen
 * [ ] sinnvolle Verzögerungen zwischen Zeichen, Wörtern oder Textabschnitten festlegen
 * [ ] wichtige atmosphärische Szenen mit angepasstem Timing versehen
+* [ ] prüfen, ob `ncurses` für die Terminaldarstellung des Spiels eingesetzt werden soll
+* [ ] bei Einsatz von `ncurses` grundlegende Terminalinitialisierung und -beendigung implementieren
+* [ ] bei Einsatz von `ncurses` sicherstellen, dass Darstellungslogik und eigentliche Spiellogik getrennt bleiben
 * [ ] Erfolgseffekt implementieren
 * [ ] gegebenenfalls weitere Texteffekte einbauen
 * [ ] Darstellung im verwendeten Terminal testen
