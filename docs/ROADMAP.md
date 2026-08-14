@@ -79,8 +79,9 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] aktuellen Raum des Spielers speichern
 * [x] aktuelle Position innerhalb eines Raums speichern
 * [x] Raum und Position als getrennte Zustände modellieren
+* [x] Räume und Positionen durch benannte `typedef enum`-Werte statt Magic Numbers modellieren
 * [x] ersten Raum mit mehreren Positionen/Perspektiven beginnen
-* [ ] mindestens drei grundlegende Räume oder größere Bereiche definieren
+* [x] mindestens drei grundlegende Räume oder größere Bereiche definieren
 * [ ] mögliche Raumwechsel vollständig festlegen
 * [ ] mögliche Positionswechsel innerhalb der Räume vollständig festlegen
 
@@ -91,7 +92,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] Zeilenumbruch nach `fgets()` entfernen
 * [x] ausgeschriebene Navigationsbefehle verarbeiten
 * [x] erste Bewegung zwischen Positionen implementieren
-* [ ] Bewegung zwischen echten Räumen implementieren
+* [x] erste Bewegung zwischen echten Räumen implementieren
 * [x] ungültige Eingaben behandeln
 * [x] Möglichkeit zum freiwilligen Beenden mit `exit` einbauen
 * [x] `exit` zentral über die Spielschleife auswerten
@@ -106,10 +107,16 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] Startposition an der verschlossenen Eingangstür definieren
 * [x] Position vor dem Wachhäuschen definieren
 * [x] Position beim Gabelstapler definieren
+* [x] Position vor dem Pausenraum definieren
 * [x] unterschiedliche Beschreibungen abhängig von der Spielerposition ermöglichen
+* [x] Wachhäuschen als betretbaren eigenen Raum anlegen
+* [x] erste Position innerhalb des Wachhäuschens definieren
+* [x] Rückweg vom Wachhäuschen zum Transportweg implementieren
+* [x] entscheiden, ob der Gabelstapler nur mehrere Positionen oder einen eigenen Pseudo-Raum benötigt
 * [ ] Navigation an jeder Position auf tatsächlich mögliche Wege beschränken
-* [ ] Wachhäuschen als betretbaren eigenen Raum ausarbeiten
-* [ ] entscheiden, ob der Gabelstapler nur mehrere Positionen oder einen eigenen Pseudo-Raum benötigt
+* [ ] Wachhäuschen mit weiteren grundlegenden Positionen ausarbeiten
+* [ ] Pausenraum als betretbaren eigenen Raum anbinden
+* [ ] erste Position innerhalb des Pausenraums definieren
 * [ ] weitere Räume und Positionen des ersten Spielabschnitts festlegen
 * [ ] Raumwechsel und Positionswechsel vollständig testen
 
@@ -121,9 +128,11 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] `playerPosition` per Pointer an Raumfunktionen übergeben
 * [x] Eingabepuffer lokal in `gameLoop()` verwalten
 * [x] Eingabepuffer und Puffergröße gezielt an Raumfunktionen übergeben
+* [x] Raum- und Positionszustände über eigene `typedef enum`-Typen ausdrücken
 * [ ] verbleibende globale Zustandsvariablen überprüfen
 * [ ] Besuchszustände der Räume und Positionen sauber in den Spielzustand integrieren
 * [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob der Spielzustand zusammengefasst werden soll
+* [ ] nach Einführung von `struct` prüfen, ob Raum und Position zu einem gemeinsamen Standort-Zustand zusammengefasst werden sollen
 
 #### Karte und räumliche Planung
 
@@ -132,7 +141,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Räume, Positionen und Verbindungen auf der Karte kennzeichnen
 * [ ] anhand der Karte unlogische oder unnötige Wege überprüfen
 * [ ] fehlende Verbindungen oder Positionen ergänzen
-* [ ] Raum- und Positions-IDs anhand der Karte überprüfen
+* [ ] Raum- und Positionsbezeichnungen anhand der Karte überprüfen
 * [ ] Navigation nach Fertigstellung der ersten Karte erneut testen
 
 #### Texte und Atmosphäre

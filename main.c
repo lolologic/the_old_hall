@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <string.h>
 
-enum Room {
+typedef enum {
     ROOM_TRANSPORT_ROUTE = 1,
     ROOM_GUARD_HOUSE = 2,
     ROOM_BREAK_ROOM = 3
-};
+} Room;
 
-enum PlayerPosition {
+typedef enum {
     POSITION_TRANSPORT_ROUTE_ENTRANCE = 1,
     POSITION_TRANSPORT_ROUTE_GUARD_HOUSE_DOOR = 2,
     POSITION_TRANSPORT_ROUTE_FORK_LIFT = 3,
     POSITION_TRANSPORT_ROUTE_BREAK_ROOM_DOOR = 4,
 
     POSITION_GUARD_HOUSE_ENTRANCE = 5,
-};
+} PlayerPosition;
 
 void intro(void);
 int gameLoop(void);
-int showTransportRoute(char *inputBuffer, int inputBufferSize, enum PlayerPosition *playerPosition);
-int showGuardHouse(char *inputBuffer, int inputBufferSize, enum PlayerPosition *playerPosition);
+int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition);
+int showGuardHouse(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition);
 int showBreakRoom(char *inputBuffer, int inputBufferSize);
 void readInput(char *inputBuffer, int inputBufferSize);
 
@@ -52,8 +52,8 @@ void readInput(char *inputBuffer, int inputBufferSize) {
 
 int gameLoop(void) {
 
-    enum Room room = ROOM_TRANSPORT_ROUTE;
-    enum PlayerPosition playerPosition = POSITION_TRANSPORT_ROUTE_ENTRANCE;
+    Room room = ROOM_TRANSPORT_ROUTE;
+    PlayerPosition playerPosition = POSITION_TRANSPORT_ROUTE_ENTRANCE;
 
     char input[30] = "";
     int gameRunning = 1;
@@ -110,7 +110,7 @@ void intro(void) {
     printf("Die Tür ist zugefallen! Die Amatur fehlt. Du rüttelst vergeblich an ihr.\n\n");
 }
 
-int showTransportRoute(char *inputBuffer, int inputBufferSize, enum PlayerPosition *playerPosition) {
+int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition) {
 
     if (*playerPosition == POSITION_TRANSPORT_ROUTE_ENTRANCE && positionTransportRouteEntranceVisited == 0) {
 
@@ -249,7 +249,7 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, enum PlayerPositi
     return ROOM_TRANSPORT_ROUTE;
 }
 
-int showGuardHouse(char *inputBuffer, int inputBufferSize, enum PlayerPosition *playerPosition) {
+int showGuardHouse(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition) {
 
     if (*playerPosition == POSITION_GUARD_HOUSE_ENTRANCE && positionGuardHouseEntranceVisited == 0) {
 
