@@ -1,6 +1,6 @@
 # KONCEPT
 
-**Version:** 0.1
+**Version:** 0.2
 **Projekt:** Roboter-Textadventure
 **Arbeitstitel:** *Die alte Halle*
 
@@ -8,11 +8,13 @@
 
 ## 1. Grundidee
 
-Das Projekt ist ein kleines, düsteres Textadventure in zwei Teilstücken, das die bereits entwickelte Roboter-Verhaltens-Simulation erweitert und in eine zusammenhängende Spielwelt integriert.
+Das Projekt ist ein kleines, düsteres Textadventure in zwei Teilstücken.
 
-Der Spieler betritt gemeinsam mit **ROBO-01** eine alte, verlassene Industriehalle.
+Der Spieler erkundet eine alte, verlassene Industrieanlage und gelangt dabei zunehmend tiefer in das Gebäude.
 
-ROBO-01 begleitet den Spieler durch das Abenteuer und gibt auf verspielte Art nützliche Hinweise. Wie hilfreich diese Hinweise ausfallen, hängt jedoch vom Verhalten des Spielers und vom aktuellen Zustand des Roboters ab.
+Während der Erkundung trifft der Spieler auf **ROBO-01**, der im weiteren Verlauf zu einem eigenständigen Bestandteil des Abenteuers wird.
+
+ROBO-01 kann den Spieler begleiten und auf verspielte Art nützliche Hinweise geben. Wie hilfreich diese Hinweise ausfallen, hängt jedoch vom Verhalten des Spielers und vom aktuellen Zustand des Roboters ab.
 
 Wer ROBO-01 verärgert, schlecht behandelt oder sich bei bestimmten Entscheidungen besonders ungeschickt anstellt, muss damit rechnen, dass der Roboter weniger kooperativ reagiert.
 
@@ -76,7 +78,7 @@ Diese Gegenstände können verwendet werden, um das Energielevel des Spielers zu
 
 ## 5. ROBO-01
 
-ROBO-01 ist Begleiter, Hinweisgeber und eigenständiger Bestandteil der Spielmechanik.
+ROBO-01 wird im Verlauf der Erkundung Teil des Abenteuers und entwickelt sich zu Begleiter, Hinweisgeber und eigenständigem Bestandteil der Spielmechanik.
 
 Sein Verhalten soll sich abhängig von vorherigen Ereignissen und Entscheidungen verändern.
 

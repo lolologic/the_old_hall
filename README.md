@@ -2,11 +2,13 @@
 
 Ein kleines textbasiertes Adventure in C.
 
-Das Projekt entsteht als Lernprojekt und verbindet klassische Konsolenprogrammierung mit einem dynamischen Begleiter-System rund um den Roboter ROBO-01.
+Das Projekt entsteht als Lernprojekt und verbindet klassische Konsolenprogrammierung mit der Erkundung einer verlassenen Industrieanlage und einem dynamischen Begleiter-System rund um den Roboter ROBO-01.
 
 ## Status
 
-Aktuell befindet sich das Projekt in der Konzept- und Planungsphase.
+Das Projekt befindet sich in aktiver Entwicklung.
+
+Aktuell entsteht die grundlegende Spielwelt mit Räumen, Positionen, textbasierter Navigation und einer dauerhaft laufenden Spielschleife.
 
 ## Dokumentation
 
@@ -16,9 +18,11 @@ Aktuell befindet sich das Projekt in der Konzept- und Planungsphase.
 ## Geplante Inhalte
 
 - Erkundung einer verlassenen Industriehalle
+- mehrere Räume, Bereiche und untersuchbare Orte
+- textbasierte Navigation und Interaktionen
 - Spielerenergie
 - Inventar und Gegenstände
-- dynamische Roboterzustände
+- dynamische Zustände und Reaktionen von ROBO-01
 - zufällige Gegenstandsverteilung
 - Rätsel und zweiter Spielabschnitt
 - ASCII-Art und farbige Konsolenausgabe
@@ -31,4 +35,4 @@ Aktuell befindet sich das Projekt in der Konzept- und Planungsphase.
 
 ## Projektziel
 
-Das Projekt dient dazu, grundlegende C-Kenntnisse in einem größeren zusammenhängenden Programm anzuwenden und schrittweise auszubauen.
+Das Projekt dient dazu, grundlegende C-Kenntnisse in einem größeren zusammenhängenden Programm praktisch anzuwenden und mit zunehmendem Lernfortschritt schrittweise zu erweitern und zu strukturieren.
