@@ -83,23 +83,26 @@ int gameLoop(void) {
 
 void intro(void) {
 
-    printf("Du stehst vor einer alten verlassenen Industriehalle und siehst einen seitlichen Eingang, "
+    printf("\n");
+
+    printf("Du stehst auf einem alten verlassenen Industriegelände. "
+        "In der ferne siehst du ein großes Gebäude mit seitlichen Eingang, "
         "dessen Tür ein Spalt geöffnet zu sein scheint.\n\n");
 
-    printf("Langsam aber neugierig nährst du dich.\n\n");
+    printf("Neugierig aber langsam nährst du dich.\n\n");
 
-    printf("Ein fernes aber lautes Geräusch ist plötzlich zu hören. BOOM...KLIRR... "
+    printf("Ein lautes Geräusch ist plötzlich zu hören. BOOM...KLIRR... "
         "Es hörte sich metallisch an.\n\n");
 
     printf("Du betrittst die unheimlich einladend aussehende Stahltür und stehst verwundert "
         "auf einem großen Transportweg, welcher durch ein klaffendes Loch im Wellblech "
-        "der Decke vom Tageslicht beleuchtet wird.\n\n");
+        "der Decke gerade soviel Tageslicht hinein lässt, dass du etwas sehen kannst.\n\n");
 
-    printf("CAW...CAW... Krähen steigen wie aus dem nichts auf und beim Fliegen durch die offene Decke, "
-        "werfen sie einen riesigen Schatten auf dem Boden.\n\n");
+    printf("CAW...CAW... Krähen steigen wie aus dem nichts empor und "
+        "werfen beim Fliegen durch das Loch in der Decke, "
+        "einen riesigen Schatten auf dem Boden.\n\n");
 
-    printf("Als du erschrocken nach oben schaust... KLACK... . Du drehst dich zur Tür, "
-        "durch die du die Halle betreten hast.\n\n");
+    printf("Als du erschrocken nach oben schaust... KLACK... . Du drehst dich um.\n\n");
 
     printf("Die Tür ist zugefallen! Die Amatur fehlt. Du rüttelst vergeblich an ihr.\n\n");
 }
@@ -172,7 +175,7 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, enum PlayerPositi
 
     readInput(inputBuffer, inputBufferSize);
 
-    
+
     if (*playerPosition == POSITION_TRANSPORT_ROUTE_ENTRANCE) {
 
         if (strcmp(inputBuffer, "rechts") == 0) {
