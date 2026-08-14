@@ -63,6 +63,8 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * aktuelle Position des Spielers innerhalb eines Raums
 * Bewegung zwischen Positionen und Räumen
 * textbasierte Navigation über ausgeschriebene Befehle
+* zusammengesetzte Spielerbefehle aus Aktion und optionalem Ziel oder Richtung
+* grundlegende zentrale Befehlsauswertung
 * grundlegende Eingabeverarbeitung
 * Beenden des Spiels durch den Spieler
 * allgemeine `zurück`-Navigation zum vorherigen Standort
@@ -97,6 +99,12 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] ungültige Eingaben behandeln
 * [x] Möglichkeit zum freiwilligen Beenden mit `exit` einbauen
 * [x] `exit` zentral über die Spielschleife auswerten
+* [ ] grundlegende Befehlsstruktur aus Aktion und optionaler Richtung oder Ziel festlegen
+* [ ] erste zusammengesetzte Navigationsbefehle wie `gehe nach rechts` verarbeiten
+* [ ] erste Wahrnehmungsbefehle wie `schaue nach rechts` oder `sieh dich um` ermöglichen
+* [ ] Navigation und Wahrnehmung als unterschiedliche Aktionen behandeln
+* [ ] prüfen, ob die Auswertung der Spielerbefehle in eine zentrale Parser-/Command-Funktion ausgelagert werden soll
+* [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob ein Spielerbefehl als eigener strukturierter Zustand modelliert werden soll
 * [ ] vorherigen Raum speichern
 * [ ] vorherige Position speichern
 * [ ] allgemeinen `zurück`-Befehl zum vorherigen Standort implementieren
@@ -231,6 +239,10 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] erste Gegenstandsabhängigkeiten einbauen
 * [ ] Aktionen ohne benötigten Gegenstand sinnvoll behandeln
 * [ ] Inventar- und Gegenstandslogik testen
+* [ ] Befehlsauswertung um Gegenstandsaktionen erweitern
+* [ ] Befehle wie `nehme <Gegenstand>`, `untersuche <Gegenstand>` und `lege <Gegenstand> ab` ermöglichen
+* [ ] Befehle mit Aktion und Ziel wie `benutze <Gegenstand> mit <Ziel>` vorbereiten
+* [ ] sicherstellen, dass dieselbe grundlegende Befehlsstruktur für Navigation und Gegenstandsinteraktionen verwendet wird
 
 ---
 

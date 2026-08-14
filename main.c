@@ -107,7 +107,7 @@ void intro(void) {
 
     printf("Als du erschrocken nach oben schaust... KLACK... . Du drehst dich um.\n\n");
 
-    printf("Die Tür ist zugefallen! Die Amatur fehlt. Du rüttelst vergeblich an ihr.\n\n");
+    printf("Die Tür ist zugefallen! Die Armatur fehlt. Du rüttelst vergeblich an ihr.\n\n");
 }
 
 int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition) {
