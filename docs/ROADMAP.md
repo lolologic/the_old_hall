@@ -138,12 +138,14 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] Eingabepuffer lokal in `gameLoop()` verwalten
 * [x] Eingabepuffer und Puffergröße gezielt an Raumfunktionen übergeben
 * [x] Raum- und Positionszustände über eigene `typedef enum`-Typen ausdrücken
+* [ ] `struct` für zusammengehörige Spielzustände praktisch erproben
+* [ ] prüfen, ob `Room` und `PlayerPosition` zu einem gemeinsamen `Location`-Zustand zusammengefasst werden sollen
+* [ ] aktuellen Standort über einen gemeinsamen Standort-Zustand verwalten
+* [ ] vorherigen Standort als vollständige Kombination aus Raum und Position speichern
+* [ ] allgemeine Navigation auf Basis von aktuellem und vorherigem Standort prüfen
 * [ ] verbleibende globale Zustandsvariablen überprüfen
 * [ ] Besuchszustände der Räume und Positionen sauber in den Spielzustand integrieren
-* [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob der Spielzustand zusammengefasst werden soll
-* [ ] nach Einführung von `struct` prüfen, ob Raum und Position zu einem gemeinsamen Standort-Zustand zusammengefasst werden sollen
-* [ ] prüfen, ob Spieltexte aus dem Programmcode in externe Inhaltsdateien ausgelagert werden sollen
-* [ ] geeignetes Dateiformat und Zugriffsmodell für ausgelagerte Spieltexte festlegen
+* [ ] prüfen, welche weiteren zusammengehörigen Spielzustände später sinnvoll durch `struct` gebündelt werden können
 
 #### Karte und räumliche Planung
 
@@ -341,9 +343,9 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 
 ---
 
-## Version 0.8 – ASCII-Art, Farben und Effekte
+## Version 0.8 – Darstellung, Sound und Effekte
 
-**Ziel:** Die funktionierende Spielmechanik atmosphärisch und visuell aufwerten.
+**Ziel:** Die funktionierende Spielmechanik atmosphärisch, visuell und akustisch aufwerten.
 
 ### Geplant
 
@@ -356,7 +358,11 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * zeitgesteuerte Textausgabe
 * unterschiedliche Ausgabegeschwindigkeiten für Atmosphäre und Spannung
 * kleinere Texteffekte
-* Prüfung einer Terminalbibliothek wie `ncurses` für die Darstellung
+* Prüfung einer Terminalbibliothek wie `ncurses`
+* Transition-Animationen zwischen besonderen Szenen, Räumen oder Spielzuständen
+* Soundeffekte für ausgewählte Ereignisse und Umgebungsgeräusche
+* Prüfung einer geeigneten technischen Lösung für die Soundausgabe
+* klare Trennung zwischen Spiellogik und Darstellung bzw. Sound
 
 ### Checkliste
 
@@ -373,13 +379,21 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Ausgabegeschwindigkeit zentral steuerbar machen
 * [ ] sinnvolle Verzögerungen zwischen Zeichen, Wörtern oder Textabschnitten festlegen
 * [ ] wichtige atmosphärische Szenen mit angepasstem Timing versehen
-* [ ] prüfen, ob `ncurses` für die Terminaldarstellung des Spiels eingesetzt werden soll
-* [ ] bei Einsatz von `ncurses` grundlegende Terminalinitialisierung und -beendigung implementieren
-* [ ] bei Einsatz von `ncurses` sicherstellen, dass Darstellungslogik und eigentliche Spiellogik getrennt bleiben
+* [ ] prüfen, ob `ncurses` für die Terminaldarstellung eingesetzt werden soll
+* [ ] bei Einsatz von `ncurses` grundlegende Terminaldarstellung strukturieren
+* [ ] geeignete Stellen für Transition-Animationen festlegen
+* [ ] erste einfache Transition-Animation implementieren
+* [ ] sicherstellen, dass Animationen den eigentlichen Spielzustand nicht beeinflussen
+* [ ] geeignete Ereignisse für Soundeffekte festlegen
+* [ ] technische Lösung für Soundausgabe auswählen
+* [ ] erste Soundeffekte oder Umgebungsgeräusche integrieren
+* [ ] Lautstärke und Häufigkeit von Soundeffekten auf eine angenehme Nutzung abstimmen
+* [ ] sicherstellen, dass das Spiel auch ohne Sound logisch vollständig spielbar bleibt
+* [ ] Darstellungs-, Animations- und Soundlogik möglichst von der eigentlichen Spiellogik trennen
 * [ ] Erfolgseffekt implementieren
-* [ ] gegebenenfalls weitere Texteffekte einbauen
+* [ ] gegebenenfalls weitere audiovisuelle Effekte einbauen
 * [ ] Darstellung im verwendeten Terminal testen
-* [ ] sicherstellen, dass Texteffekte die Spiellogik nicht beeinflussen
+* [ ] sicherstellen, dass Effekte die Spiellogik nicht beeinflussen
 
 ---
 
