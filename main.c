@@ -14,13 +14,17 @@ typedef enum {
     POSITION_TRANSPORT_ROUTE_BREAK_ROOM_DOOR = 4,
 
     POSITION_GUARD_HOUSE_ENTRANCE = 5,
+
+    POSITION_BREAK_ROOM_ENTRANCE = 6,
+    POSITION_BREAK_ROOM_LOCKERS = 7,
+    POSITION_BREAK_ROOM_KITCHENETTE = 8,
 } PlayerPosition;
 
 void intro(void);
 int gameLoop(void);
 int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition);
 int showGuardHouse(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition);
-int showBreakRoom(char *inputBuffer, int inputBufferSize);
+int showBreakRoom(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition);
 void readInput(char *inputBuffer, int inputBufferSize);
 
 //int roomTransportRouteVisited = 0;
@@ -33,6 +37,9 @@ int positionTransportRouteBreakRoomDoorVisited = 0;
 int positionGuardHouseEntranceVisited = 0;
 
 //int roomBreakRoomVisited = 0;
+int positionBreakRoomEntranceVisited = 0;
+int positionBreakRoomLockersVisited = 0;
+int positionBreakRoomKitchenetteVisited = 0;
 
 int main(void) {
 
@@ -70,7 +77,7 @@ int gameLoop(void) {
                 break;
         
             case ROOM_BREAK_ROOM:
-                room = showBreakRoom(input, sizeof(input));
+                room = showBreakRoom(input, sizeof(input), &playerPosition);
                 break;
         }
 
@@ -118,14 +125,12 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
 
         printf("Beim umsehen bemerkst du auf der rechten Seite eine Art Wachhäusschen am Rand "
             "des Transportwegs, auf der linken Seite steht ein Gabelstapler mitten auf dem Weg.\n\n");
-
         positionTransportRouteEntranceVisited = 1;
 
     } else if (*playerPosition == POSITION_TRANSPORT_ROUTE_ENTRANCE) {
 
         printf("\nAuf der rechten Seite ist das Wachhäusschen am Rand des Transportweges "
             "und auf der linken Seite steht der Gabelstapler mitten auf dem Weg.\n\n");
-
     } 
     
     
@@ -134,13 +139,11 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
         printf("\n--- Vor dem Wachhäusschen ---\n");
 
         printf("Du stehst vor dem Wachhäusschen, die Tür steht offen.\n\n");
-
         positionTransportRouteGuardHouseDoorVisited = 1;
 
     } else if (*playerPosition == POSITION_TRANSPORT_ROUTE_GUARD_HOUSE_DOOR) {
 
         printf("\nDu stehst wieder vor dem Wachhäusschen.\n\n");
-
     } 
     
     
@@ -150,13 +153,11 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
 
         printf("Du stehst vor dem alten Gabelstapler mitten auf dem Transportweg. "
             "Auf der rechten Seite siehst du eine Tür, am ende von einem schmalen Gang.\n\n");
-
         positionTransportRouteForkLiftVisited = 1;
 
     } else if (*playerPosition == POSITION_TRANSPORT_ROUTE_FORK_LIFT) {
 
         printf("\nDu stehst wieder vor dem alten Gabelstapler.\n\n");
-
     } 
     
     
@@ -165,15 +166,13 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
         printf("\n--- Der Pausenraum ---\n");
 
         printf("Du stehst vor einer Tür mit einem kleinen Glasfenster, "
-            "wodurch du zusammengestellte Tische, sowie herumliegende Stühle sehen kannst.\n\n");
-        
+            "wodurch du zusammengestellte Tische, sowie herumliegende Stühle sehen kannst.\n\n"); 
         positionTransportRouteBreakRoomDoorVisited = 1;
 
     } else if (*playerPosition == POSITION_TRANSPORT_ROUTE_BREAK_ROOM_DOOR) {
 
         printf("\nDu stehst vor einer Tür mit einem kleinen Glasfenster, "
-            "wodurch du zusammengestellte Tische, sowie herumliegende Stühle sehen kannst.\n\n");
-        
+            "wodurch du zusammengestellte Tische, sowie herumliegende Stühle sehen kannst.\n\n");    
     }
 
     readInput(inputBuffer, inputBufferSize);
@@ -211,7 +210,6 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
         } else if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
 
             *playerPosition = POSITION_TRANSPORT_ROUTE_ENTRANCE;
-
         
         } else if (strcmp(inputBuffer, "exit") != 0) {
 
@@ -236,7 +234,14 @@ int showTransportRoute(char *inputBuffer, int inputBufferSize, PlayerPosition *p
 
     } else if (*playerPosition == POSITION_TRANSPORT_ROUTE_BREAK_ROOM_DOOR) {
 
-        if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
+        if (strcmp(inputBuffer, "betreten") == 0) {
+
+            printf("\nDu betrittst den Pausenraum...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_ENTRANCE;
+
+            return ROOM_BREAK_ROOM;
+
+        } else if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
 
             *playerPosition = POSITION_TRANSPORT_ROUTE_FORK_LIFT;
 
@@ -263,7 +268,6 @@ int showGuardHouse(char *inputBuffer, int inputBufferSize, PlayerPosition *playe
     } else if (*playerPosition == POSITION_GUARD_HOUSE_ENTRANCE) {
 
         printf("Links von dir steht ein Schreibtisch, rechts eine alte Tasche und vor dir ein Schrank.\n\n");
-
     } 
 
     readInput(inputBuffer, inputBufferSize);
@@ -275,24 +279,124 @@ int showGuardHouse(char *inputBuffer, int inputBufferSize, PlayerPosition *playe
 
     } else if (strcmp(inputBuffer, "exit") != 0) {
 
-        printf("\nUnbekannter Befehl im Wachhäusschen.\n");
+        printf("\nUnbekannter Befehl im Wachhäusschen.\n\n");
     }
 
     return ROOM_GUARD_HOUSE;
 }
 
-int showBreakRoom(char *inputBuffer, int inputBufferSize) {
+int showBreakRoom(char *inputBuffer, int inputBufferSize, PlayerPosition *playerPosition) {
+
+    if (*playerPosition == POSITION_BREAK_ROOM_ENTRANCE && positionBreakRoomEntranceVisited == 0) {
+
+        printf("\n--- Der Pausenraum ---\n");
+
+        printf("Es stehen vier große Tische mittig im Raum aneinandergestellt, drumherum stehen und liegen Stühle. "
+            "Vor Kopf an der Wand stehen eine Reihe Spinte, rechts vom Raum ist eine kleine Küchenzeile.\n\n");
+
+        positionBreakRoomEntranceVisited = 1;
+
+    } else if (*playerPosition == POSITION_BREAK_ROOM_ENTRANCE) {
+
+        printf("Es stehen vier große Tische mittig im Raum aneinandergestellt, drumherum stehen und liegen Stühle. "
+            "Vor Kopf an der Wand steht eine Reihe Spinte, rechts vom Raum ist eine kleine Küchenzeile.\n\n");
+    } 
+
+
+    if (*playerPosition == POSITION_BREAK_ROOM_LOCKERS && positionBreakRoomLockersVisited == 0) {
+
+        printf("Interessant: vielleicht sind hier noch nützliche überbleibsel der früheren Arbeiter zu finden?\n\n");
+        printf("Ein paar wenige der Spinte stehen offen, einige sind geschlossen und an zwei der Spinte hängt ein Schloss vor.\n\n");
+        positionBreakRoomLockersVisited = 1;
+
+    } else if (*playerPosition == POSITION_BREAK_ROOM_LOCKERS) {
+
+        printf("Ein paar wenige der Spinte stehen offen, einige sind geschlossen und an zwei der Spinte hängt ein Schloss vor.\n\n");
+    }
+
+
+    if (*playerPosition == POSITION_BREAK_ROOM_KITCHENETTE && positionBreakRoomKitchenetteVisited == 0) {
+
+        printf("Diese Küche wurde nicht unbedingt sauber hinterlassen. "
+            "Aus dem Kühlschrank läuft etwas flüssiges heraus, in der Mikrowelle scheint etwas zu leben und "
+            "es stehen alte Kaffeetassen im Spülbecken.\n\n");
+        printf("Vor dir sind zwei Oberschränke und zwei Unterschränke mit Schubläden.\n\n");
+        positionBreakRoomKitchenetteVisited = 1;
+
+    } else if (*playerPosition == POSITION_BREAK_ROOM_KITCHENETTE) {
+
+        printf("Vor dir sind zwei Oberschränke und zwei Unterschränke mit Schubläden.\n\n");
+    }
 
     readInput(inputBuffer, inputBufferSize);
 
-    if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
+    if (*playerPosition == POSITION_BREAK_ROOM_ENTRANCE) {
 
-        return ROOM_TRANSPORT_ROUTE;
+        if ((strcmp(inputBuffer, "vorwärts") == 0 || strcmp(inputBuffer, "vorwaerts") == 0) && positionBreakRoomLockersVisited == 0) {
 
-    } else if (strcmp(inputBuffer, "exit") != 0) {
+            printf("\nDu läufst an dem Tisch vorbei...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_LOCKERS;
 
-        printf("\nUnbekannter Befehl im Pausenraum.\n");
-    }
+        } else if (strcmp(inputBuffer, "vorwärts") == 0 || strcmp(inputBuffer, "vorwaerts") == 0) {
+
+            printf("\nDu läufst an dem Tisch vorbei...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_LOCKERS;
+
+        } else if (strcmp(inputBuffer, "rechts") == 0 && positionBreakRoomKitchenetteVisited == 0) {
+
+            printf("\nAuf dem Weg stolperst du beinahe über einen liegenden Stuhl, stellst ihn auf und gehst weiter...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_KITCHENETTE;
+
+        } else if (strcmp(inputBuffer, "rechts") == 0) {
+
+            printf("\nDu läufst die Wand endlang an einem großen Foto vorbei...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_KITCHENETTE;
+
+        } else if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
+
+            printf("\n");
+            *playerPosition = POSITION_TRANSPORT_ROUTE_BREAK_ROOM_DOOR;
+            return ROOM_TRANSPORT_ROUTE;
+
+        } else if (strcmp(inputBuffer, "exit") != 0) {
+
+            printf("\nUnbekannter Befehl im Pausenraum.\n\n");
+        }
+
+    } else if (*playerPosition == POSITION_BREAK_ROOM_LOCKERS) {
+
+        if (strcmp(inputBuffer, "rechts") == 0) {
+
+                printf("\nDu gehst zur Küche...\n\n");
+                *playerPosition = POSITION_BREAK_ROOM_KITCHENETTE;
+
+        } else if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
+
+            printf("\n");
+            *playerPosition = POSITION_BREAK_ROOM_ENTRANCE;
+
+        } else if (strcmp(inputBuffer, "exit") != 0) {
+
+            printf("\nUnbekannter Befehl im Pausenraum.\n\n");
+        }
+
+    } else if (*playerPosition == POSITION_BREAK_ROOM_KITCHENETTE) {
+
+        if (strcmp(inputBuffer, "links") == 0) {
+
+            printf("\nDu gehst zu den Spinten...\n\n");
+            *playerPosition = POSITION_BREAK_ROOM_LOCKERS;
+
+        } else if (strcmp(inputBuffer, "zurück") == 0 || strcmp(inputBuffer, "zurueck") == 0) {
+
+            printf("\n");
+            *playerPosition = POSITION_BREAK_ROOM_ENTRANCE;
+            
+        } else if (strcmp(inputBuffer, "exit") != 0) {
+
+            printf("\nUnbekannter Befehl im Pausenraum.\n\n");
+        }
 
     return ROOM_BREAK_ROOM;
+    }
 }

@@ -124,8 +124,8 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] entscheiden, ob der Gabelstapler nur mehrere Positionen oder einen eigenen Pseudo-Raum benötigt
 * [ ] Navigation an jeder Position auf tatsächlich mögliche Wege beschränken
 * [ ] Wachhäuschen mit weiteren grundlegenden Positionen ausarbeiten
-* [ ] Pausenraum als betretbaren eigenen Raum anbinden
-* [ ] erste Position innerhalb des Pausenraums definieren
+* [x] Pausenraum als betretbaren eigenen Raum anbinden
+* [x] erste Position innerhalb des Pausenraums definieren
 * [ ] weitere Räume und Positionen des ersten Spielabschnitts festlegen
 * [ ] Raumwechsel und Positionswechsel vollständig testen
 
