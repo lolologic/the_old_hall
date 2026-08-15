@@ -391,12 +391,12 @@ int showBreakRoom(char *inputBuffer, int inputBufferSize, PlayerPosition *player
 
             printf("\n");
             *playerPosition = POSITION_BREAK_ROOM_ENTRANCE;
-            
+
         } else if (strcmp(inputBuffer, "exit") != 0) {
 
             printf("\nUnbekannter Befehl im Pausenraum.\n\n");
         }
+    }
 
     return ROOM_BREAK_ROOM;
-    }
 }
