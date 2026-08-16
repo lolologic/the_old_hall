@@ -61,14 +61,17 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * Positionen und Perspektiven innerhalb von Räumen
 * aktueller Raum des Spielers
 * aktuelle Position des Spielers innerhalb eines Raums
+* getrennte Verwaltung von Standort und Blickrichtung des Spielers
+* grundlegende Himmelsrichtungen innerhalb der Spielwelt
 * Bewegung zwischen Positionen und Räumen
+* relative Navigation abhängig von der aktuellen Blickrichtung
 * textbasierte Navigation über ausgeschriebene Befehle
 * zusammengesetzte Spielerbefehle aus Aktion und optionalem Ziel oder Richtung
 * grundlegende zentrale Befehlsauswertung
 * grundlegende Eingabeverarbeitung
 * Beenden des Spiels durch den Spieler
 * allgemeine `zurück`-Navigation zum vorherigen Standort
-* erste Karte der Spielwelt
+* interne Karte der Spielwelt als Grundlage für räumliche Navigation und Himmelsrichtungen
 * erste Ausarbeitung der Raum-, Positions- und Umgebungstexte
 * Prüfung einer Auslagerung der Spieltexte aus dem Programmcode
 
@@ -103,6 +106,13 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] erste zusammengesetzte Navigationsbefehle wie `gehe nach rechts` verarbeiten
 * [ ] erste Wahrnehmungsbefehle wie `schaue nach rechts` oder `sieh dich um` ermöglichen
 * [ ] Navigation und Wahrnehmung als unterschiedliche Aktionen behandeln
+* [ ] grundlegende Himmelsrichtungen für die Spielwelt definieren
+* [ ] aktuelle Blickrichtung des Spielers separat vom Standort modellieren
+* [ ] zwischen absoluten Richtungen wie Norden/Osten/Süden/Westen und relativen Richtungen wie links/rechts/vorwärts unterscheiden
+* [ ] festlegen, wie sich relative Richtungsbefehle aus der aktuellen Blickrichtung ergeben
+* [ ] Drehen bzw. Ändern der Blickrichtung ermöglichen
+* [ ] Blickbefehle wie `schaue nach rechts` ermöglichen, ohne automatisch die Spielerposition zu verändern
+* [ ] Bewegungsbefehle und reine Blickrichtungsänderungen als getrennte Aktionen behandeln
 * [ ] prüfen, ob die Auswertung der Spielerbefehle in eine zentrale Parser-/Command-Funktion ausgelagert werden soll
 * [ ] nach Einführung geeigneter Datenstrukturen prüfen, ob ein Spielerbefehl als eigener strukturierter Zustand modelliert werden soll
 * [ ] vorherigen Raum speichern
@@ -122,10 +132,14 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] erste Position innerhalb des Wachhäuschens definieren
 * [x] Rückweg vom Wachhäuschen zum Transportweg implementieren
 * [x] entscheiden, ob der Gabelstapler nur mehrere Positionen oder einen eigenen Pseudo-Raum benötigt
-* [ ] Navigation an jeder Position auf tatsächlich mögliche Wege beschränken
-* [ ] Wachhäuschen mit weiteren grundlegenden Positionen ausarbeiten
 * [x] Pausenraum als betretbaren eigenen Raum anbinden
 * [x] erste Position innerhalb des Pausenraums definieren
+* [x] Position bei den Spinten im Pausenraum definieren
+* [x] Position bei der Küchenzeile im Pausenraum definieren
+* [x] erste Positionswechsel innerhalb des Pausenraums implementieren
+* [ ] Navigation an jeder Position auf tatsächlich mögliche Wege beschränken
+* [ ] Wachhäuschen mit weiteren grundlegenden Positionen oder Perspektiven ausarbeiten
+* [ ] grundlegende Navigation innerhalb des Pausenraums vollständig festlegen
 * [ ] weitere Räume und Positionen des ersten Spielabschnitts festlegen
 * [ ] Raumwechsel und Positionswechsel vollständig testen
 
@@ -139,22 +153,33 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [x] Eingabepuffer und Puffergröße gezielt an Raumfunktionen übergeben
 * [x] Raum- und Positionszustände über eigene `typedef enum`-Typen ausdrücken
 * [ ] `struct` für zusammengehörige Spielzustände praktisch erproben
-* [ ] prüfen, ob `Room` und `PlayerPosition` zu einem gemeinsamen `Location`-Zustand zusammengefasst werden sollen
-* [ ] aktuellen Standort über einen gemeinsamen Standort-Zustand verwalten
+* [ ] `Room` und `PlayerPosition` zu einem gemeinsamen `Location`-Zustand zusammenfassen
+* [ ] `Location` ausschließlich für den tatsächlichen Standort des Spielers verwenden
+* [ ] aktuellen Standort über einen gemeinsamen `Location`-Zustand verwalten
+* [ ] Blickrichtung als eigenen Zustand getrennt von `Location` modellieren
+* [ ] prüfen, ob Standort und Blickrichtung später gemeinsam in einem übergeordneten Spielerzustand gebündelt werden sollen
 * [ ] vorherigen Standort als vollständige Kombination aus Raum und Position speichern
+* [ ] festlegen, ob bei einer allgemeinen `zurück`-Navigation zusätzlich die vorherige Blickrichtung wiederhergestellt werden soll
 * [ ] allgemeine Navigation auf Basis von aktuellem und vorherigem Standort prüfen
 * [ ] verbleibende globale Zustandsvariablen überprüfen
 * [ ] Besuchszustände der Räume und Positionen sauber in den Spielzustand integrieren
 * [ ] prüfen, welche weiteren zusammengehörigen Spielzustände später sinnvoll durch `struct` gebündelt werden können
+* [ ] prüfen, ob Spieltexte aus dem Programmcode in externe Inhaltsdateien ausgelagert werden sollen
+* [ ] geeignetes Dateiformat und Zugriffsmodell für ausgelagerte Spieltexte festlegen
 
 #### Karte und räumliche Planung
 
 * [ ] erste spielbare Räume und Positionen technisch fertigstellen
-* [ ] Karte der bisher implementierten Spielwelt zeichnen
-* [ ] Räume, Positionen und Verbindungen auf der Karte kennzeichnen
+* [ ] interne Karte der bisher implementierten Spielwelt zeichnen
+* [ ] Räume, Positionen und Verbindungen auf der internen Karte kennzeichnen
+* [ ] grundlegende Himmelsrichtungen auf der Karte festlegen
+* [ ] Verbindungen zwischen Positionen anhand ihrer tatsächlichen Himmelsrichtung definieren
+* [ ] interne Weltkarte als Grundlage für eine räumlich konsistente Navigation verwenden
+* [ ] interne Weltkarte unabhängig von einer später für den Spieler sichtbaren Karte behandeln
 * [ ] anhand der Karte unlogische oder unnötige Wege überprüfen
 * [ ] fehlende Verbindungen oder Positionen ergänzen
 * [ ] Raum- und Positionsbezeichnungen anhand der Karte überprüfen
+* [ ] prüfen, ob relative Befehle wie `links`, `rechts` und `vorwärts` mit Karte und Blickrichtung konsistent sind
 * [ ] Navigation nach Fertigstellung der ersten Karte erneut testen
 
 #### Texte und Atmosphäre
@@ -174,6 +199,7 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] `exit` aus allen erreichbaren Spielsituationen testen
 * [ ] ungültige Eingaben an allen Positionen testen
 * [ ] prüfen, ob Raum- und Positionsmodell für die weitere Spielwelt ausreicht
+* [ ] prüfen, ob das Modell aus Standort, Blickrichtung und relativer Navigation für die weitere Spielwelt ausreicht
 * [ ] Karte und Code auf Übereinstimmung prüfen
 * [ ] Version 0.2 als stabilen navigierbaren Grundstand abschließen
 
@@ -245,6 +271,10 @@ Die Checklisten dienen dabei als konkrete Arbeitsgrundlage und können während 
 * [ ] Befehle wie `nehme <Gegenstand>`, `untersuche <Gegenstand>` und `lege <Gegenstand> ab` ermöglichen
 * [ ] Befehle mit Aktion und Ziel wie `benutze <Gegenstand> mit <Ziel>` vorbereiten
 * [ ] sicherstellen, dass dieselbe grundlegende Befehlsstruktur für Navigation und Gegenstandsinteraktionen verwendet wird
+* [ ] prüfen, ob eine Karte der Anlage als findbarer Gegenstand implementiert werden soll
+* [ ] Spielerkarte als eigenständigen Inventargegenstand behandeln
+* [ ] festlegen, welche Bereiche und Informationen auf der Spielerkarte sichtbar sein sollen
+* [ ] sicherstellen, dass die Spielerkarte von der vollständigen internen Weltkarte getrennt bleibt
 
 ---
 
